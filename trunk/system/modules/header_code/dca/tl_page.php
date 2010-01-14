@@ -26,17 +26,13 @@
  * @filesource
  */
 
-// the palette changes in 2.8 so we check to support 2.7 and 2.8
-if (version_compare(2.8, VERSION,'<=')) {
-    $GLOBALS['TL_DCA']['tl_page']['palettes']['regular'] = str_replace('{expert_legend:hide},cssClass,sitemap,hide,guests;', '{expert_legend:hide},cssClass,sitemap,hide,guests,hc_code,hc_descent;', $GLOBALS['TL_DCA']['tl_page']['palettes']['regular']);
-} else {
-    $GLOBALS['TL_DCA']['tl_page']['palettes']['regular'] = str_replace('{expert_legend:hide},cssClass,hide,guests;', '{expert_legend:hide},cssClass,hide,guests,hc_code,hc_descent;', $GLOBALS['TL_DCA']['tl_page']['palettes']['regular']);
-}
+$GLOBALS['TL_DCA']['tl_page']['palettes']['regular'] = str_replace('guests;', 'guests,hc_code,hc_descent;', $GLOBALS['TL_DCA']['tl_page']['palettes']['regular']);
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['hc_code'] = 
 array
 (
 	'label'         => &$GLOBALS['TL_LANG']['tl_page']['hc_code'],
+	'exclude'		=> true,
 	'inputType'     => 'textarea',
 	'eval'			=> array('tl_class' => 'long clr', 'preserveTags' => true, 'decodeEntities' => false, 'allowHtml' => true)
 );
@@ -45,6 +41,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['hc_descent'] =
 array
 (
 	'label'         => &$GLOBALS['TL_LANG']['tl_page']['hc_descent'],
+	'exclude'		=> true,
 	'default'       => 0,
 	'inputType'     => 'select',
 	'options'  		=> array(1 => $GLOBALS['TL_LANG']['MSC']['yes'], 0 => $GLOBALS['TL_LANG']['MSC']['no']),
