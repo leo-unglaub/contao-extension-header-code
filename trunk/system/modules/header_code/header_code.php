@@ -27,11 +27,19 @@
  */
 
 class header_code extends Frontend {
-	
+		
+	/**
+	 * Add the Header Code to the Site (Hook landing)
+	 */
 	public function addHeaderCode($strContent, $strTemplate) {	
-		$intActSite = $this->replaceInsertTags('{{env::page_id}}');
-		$this->crawlTlPage($intActSite);
+		// make HC running only one time
+		if ($GLOBALS['header_code_stop']) 
+		{
+			return $strContent;
+		}
 
+		global $objPage;
+		$this->crawlTlPage($objPage->id);
 		return $strContent;
 	}
 	
@@ -41,26 +49,32 @@ class header_code extends Frontend {
 	 */
 	private function crawlTlPage($intId) {
 		$this->Import('Database');
-		$intActPageId = $intId;
+		$intOldPageId = $intId;
 
-		while ($intActPageId > 0) {
+		while ($intId > 0) {
 			$objPage = $this->Database->prepare('SELECT id,pid,hc_descent,hc_code FROM tl_page WHERE id=?')
 									  ->limit(1)
-									  ->execute($intActPageId);
+									  ->execute($intId);
 			
 			// if the actuell page has header code
-			if (strlen($objPage->hc_code) and $intId == $objPage->id) {
+			if (strlen($objPage->hc_code) and $intOldPageId == $objPage->id) 
+			{
 				$GLOBALS['TL_HEAD'][] = $objPage->hc_code;
 			}
 			
+			//print_r($objPage);
+			
 			// check the parrents
-			if (strlen($objPage->hc_code) and $intId !== $objPage->id and $objPage->hc_descent == 1) {
+			if (strlen($objPage->hc_code) and $intOldPageId !== $objPage->id and $objPage->hc_descent == 1) 
+			{
 				$GLOBALS['TL_HEAD'][] = $objPage->hc_code;
-				$intActPageId = 0;
+				break;
 			}
 
-			$intActPageId = $objPage->pid;			
-		}		
+			$intId = $objPage->pid;			
+		}
+		// after the first run the code is in the header so we cann skip all other templates
+		$GLOBALS['header_code_stop'] = 'true';
 	}
 }
  
