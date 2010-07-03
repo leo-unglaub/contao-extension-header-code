@@ -1,13 +1,15 @@
 <?php //if (!defined('TL_ROOT')) die('You can not access this file directly!');
 
 /**
- * TYPOlight webCMS
- * Copyright (C) 2005-2009 Leo Feyer
+ * Contao Open Source CMS
+ * Copyright (C) 2005-2010 Leo Feyer
+ *
+ * Formerly known as TYPOlight Open Source CMS.
  *
  * This program is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation, either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 3 of the License, or (at your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -16,7 +18,7 @@
  * 
  * You should have received a copy of the GNU Lesser General Public
  * License along with this program. If not, please visit the Free
- * Software Foundation website at http://www.gnu.org/licenses/.
+ * Software Foundation website at <http://www.gnu.org/licenses/>.
  *
  * PHP version 5
  * @copyright  LU-Hosting 2009
@@ -31,7 +33,8 @@ class header_code extends Frontend {
 	/**
 	 * Add the Header Code to the Site (Hook landing)
 	 */
-	public function addHeaderCode($strContent, $strTemplate) {	
+	public function addHeaderCode($strContent, $strTemplate)
+	{	
 		// make HC running only one time
 		if ($GLOBALS['header_code_stop']) 
 		{
@@ -47,33 +50,58 @@ class header_code extends Frontend {
 	 * crawl the page tree to find parrent entry's
 	 * @param int $intId
 	 */
-	private function crawlTlPage($intId) {
+	private function crawlTlPage($intId)
+	{
 		$this->Import('Database');
-		$intOldPageId = $intId;
-
-		while ($intId > 0) {
-			$objPage = $this->Database->prepare('SELECT id,pid,hc_descent,hc_code FROM tl_page WHERE id=?')
-									  ->limit(1)
-									  ->execute($intId);
+		$intOldId = $intId;
+		$strBufferHead = '';
+		$strBufferFoot = '';
+		$rootId = $this->getRootIdFromUrl();
+		
+		
+		while ($intId >= $rootId)
+		{
+			$objRow = $this->Database->prepare('SELECT id,pid,hc_code,hc_footer_code,hc_inheritance,hc_mode FROM tl_page WHERE id=?')
+									 ->limit(1)
+									 ->execute($intId);
 			
-			// if the actuell page has header code
-			if (strlen($objPage->hc_code) and $intOldPageId == $objPage->id) 
+			// if the actual page has header code
+			if ((strlen($objRow->hc_code) OR strlen($objRow->hc_footer_code)) && $intOldId == $objRow->id) 
 			{
-				$GLOBALS['TL_HEAD'][] = $objPage->hc_code;
+				if ($objRow->hc_mode == 1)
+				{
+					$strBufferHead .= "\n" . $objRow->hc_code;
+					$strBufferFoot .= "\n" . $objRow->hc_footer_code;
+				}
+				else
+				{
+					$strBufferHead = $objRow->hc_code;
+					$strBufferFoot = $objRow->hc_footer_code;
+					
+					// the user want's no inheritance code, so we break the while
+					break;
+				}
 			}
-			
-			//print_r($objPage);
 			
 			// check the parrents
-			if (strlen($objPage->hc_code) and $intOldPageId !== $objPage->id and $objPage->hc_descent == 1) 
+			if ((strlen($objRow->hc_code) OR strlen($objRow->hc_footer_code)) && $intOldId !== $objRow->id && $objRow->hc_inheritance == 1) 
 			{
-				$GLOBALS['TL_HEAD'][] = $objPage->hc_code;
-				break;
+				if (count($objRow->hc_code))
+					$strBufferHead .= "\n" . $objRow->hc_code;
+
+				if (count($objRow->hc_footer_code))
+					$strBufferFoot .= "\n" . $objRow->hc_footer_code;						
 			}
 
-			$intId = $objPage->pid;			
+			// set the id to the next level to get the data from the parrent entry
+			$intId = $objRow->pid;			
 		}
-		// after the first run the code is in the header so we cann skip all other templates
+
+		// add the code to the right channel
+		$GLOBALS['TL_HEAD'][] = $strBufferHead;
+		$GLOBALS['TL_MOOTOOLS'][] = $strBufferFoot;		
+				
+		// after the first run the code is in the header so we can skip all other templates
 		$GLOBALS['header_code_stop'] = 'true';
 	}
 }

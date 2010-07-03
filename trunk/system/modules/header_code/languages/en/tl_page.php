@@ -1,13 +1,15 @@
 <?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
 
 /**
- * TYPOlight webCMS
- * Copyright (C) 2005-2009 Leo Feyer
+ * Contao Open Source CMS
+ * Copyright (C) 2005-2010 Leo Feyer
+ *
+ * Formerly known as TYPOlight Open Source CMS.
  *
  * This program is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation, either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 3 of the License, or (at your option) any later version.
  * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -16,17 +18,21 @@
  * 
  * You should have received a copy of the GNU Lesser General Public
  * License along with this program. If not, please visit the Free
- * Software Foundation website at http://www.gnu.org/licenses/.
+ * Software Foundation website at <http://www.gnu.org/licenses/>.
  *
  * PHP version 5
- * @copyright  LU-Hosting 2009
+ * @copyright  LU-Hosting 2010
  * @author     Leo Unglaub <leo@leo-unglaub.net>
  * @package    header_code
  * @license    LGPL
  * @filesource
  */
 
-$GLOBALS['TL_LANG']['tl_page']['hc_code']       = array('individual header code', 'Place here any header code. This may be META data, .js code or CSS code sein.');
-$GLOBALS['TL_LANG']['tl_page']['hc_descent']    = array('inherit code', 'If this option is set to yes the header code will be deployed to all subpages, until a new code id given.');
+$GLOBALS['TL_LANG']['tl_page']['hc_code']			= array('individual header code', 'Place here any header code. This may be META data, .js or .css code.');
+$GLOBALS['TL_LANG']['tl_page']['hc_footer_code']	= array('individual footer code', 'Place here any footer code.  The footer code is placed before the closing </div> from #wrapper.');
+$GLOBALS['TL_LANG']['tl_page']['hc_inheritance']	= array('inherit code', 'Select Yes if you want to inheritance the header/footer code to every subpage. Select No to show this code only in the actual page.');
+$GLOBALS['TL_LANG']['tl_page']['hc_mode']			= array('Select the display mode', 'Here you can select if you want to add the code from the actual site only or every code element witch is marked as inheritance.');
 
+$GLOBALS['TL_LANG']['tl_page']['hc_mode_add']		= 'all (also inheritanced code)';
+$GLOBALS['TL_LANG']['tl_page']['hc_mode_override']	= 'only the code from this site (no inheritance)';
 ?>
