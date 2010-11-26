@@ -57,8 +57,7 @@ class header_code extends Frontend {
 		$strBufferHead = '';
 		$strBufferFoot = '';
 		$rootId = $this->getRootIdFromUrl();
-		
-		
+
 		while ($intId >= $rootId)
 		{
 			$objRow = $this->Database->prepare('SELECT id,pid,hc_code,hc_footer_code,hc_inheritance,hc_mode FROM tl_page WHERE id=?')
@@ -66,7 +65,7 @@ class header_code extends Frontend {
 									 ->execute($intId);
 			
 			// if the actual page has header code
-			if ((strlen($objRow->hc_code) OR strlen($objRow->hc_footer_code)) && $intOldId == $objRow->id) 
+			if ((strlen($objRow->hc_code) || strlen($objRow->hc_footer_code)) && $intOldId == $objRow->id)
 			{
 				if ($objRow->hc_mode == 1)
 				{
@@ -84,7 +83,7 @@ class header_code extends Frontend {
 			}
 			
 			// check the parrents
-			if ((strlen($objRow->hc_code) OR strlen($objRow->hc_footer_code)) && $intOldId !== $objRow->id && $objRow->hc_inheritance == 1) 
+			if ((strlen($objRow->hc_code) || strlen($objRow->hc_footer_code)) && $intOldId !== $objRow->id && $objRow->hc_inheritance == 1)
 			{
 				if (count($objRow->hc_code))
 					$strBufferHead .= "\n" . $objRow->hc_code;
@@ -102,7 +101,7 @@ class header_code extends Frontend {
 		$GLOBALS['TL_MOOTOOLS'][] = $strBufferFoot;		
 				
 		// after the first run the code is in the header so we can skip all other templates
-		$GLOBALS['header_code_stop'] = 'true';
+		$GLOBALS['header_code_stop'] = true;
 	}
 }
  

@@ -36,7 +36,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['hc_code'] = array
 	'label'         => &$GLOBALS['TL_LANG']['tl_page']['hc_code'],
 	'exclude'		=> true,
 	'inputType'     => 'textarea',
-	'eval'			=> array('tl_class' => 'long clr', 'preserveTags' => true, 'decodeEntities' => false, 'allowHtml' => true, 'style' => 'height:200px')
+	'eval'			=> array('tl_class'=>'long clr', 'preserveTags'=>true, 'decodeEntities'=>false, 'allowHtml'=>true, 'style'=>'height:200px')
 );
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['hc_footer_code'] = array
@@ -44,7 +44,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['hc_footer_code'] = array
 	'label'         => &$GLOBALS['TL_LANG']['tl_page']['hc_footer_code'],
 	'exclude'		=> true,
 	'inputType'     => 'textarea',
-	'eval'			=> array('tl_class' => 'long clr', 'preserveTags' => true, 'decodeEntities' => false, 'allowHtml' => true, 'style' => 'height:200px')
+	'eval'			=> array('tl_class'=>'long clr', 'preserveTags'=>true, 'decodeEntities'=>false, 'allowHtml'=>true, 'style'=>'height:200px')
 );
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['hc_inheritance'] = array
@@ -53,8 +53,8 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['hc_inheritance'] = array
 	'exclude'		=> true,
 	'default'       => 1,
 	'inputType'     => 'select',
-	'options'  		=> array(1 => $GLOBALS['TL_LANG']['MSC']['yes'], 0 => $GLOBALS['TL_LANG']['MSC']['no']),
-	'eval'			=> array('tl_class' => 'w50')
+	'options'  		=> array(1=>$GLOBALS['TL_LANG']['MSC']['yes'], 0=>$GLOBALS['TL_LANG']['MSC']['no']),
+	'eval'			=> array('tl_class'=>'w50')
 );
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['hc_mode'] = array
@@ -63,8 +63,8 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['hc_mode'] = array
 	'exclude'		=> true,
 	'default'       => 1,
 	'inputType'     => 'select',
-	'options'  		=> array(1 => $GLOBALS['TL_LANG']['tl_page']['hc_mode_add'], 0 => $GLOBALS['TL_LANG']['tl_page']['hc_mode_override']),
-	'eval'			=> array('tl_class' => 'w50')
+	'options'  		=> array(1=>$GLOBALS['TL_LANG']['tl_page']['hc_mode_add'], 0=>$GLOBALS['TL_LANG']['tl_page']['hc_mode_override']),
+	'eval'			=> array('tl_class'=>'w50')
 );
 
 
