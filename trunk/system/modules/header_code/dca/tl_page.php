@@ -21,16 +21,22 @@
  * Software Foundation website at <http://www.gnu.org/licenses/>.
  *
  * PHP version 5
- * @copyright  LU-Hosting 2010
+ * @copyright  Leo Unglaub 2011
  * @author     Leo Unglaub <leo@leo-unglaub.net>
  * @package    header_code
  * @license    LGPL
  * @filesource
  */
 
+/**
+ * Palettes
+ */
 $GLOBALS['TL_DCA']['tl_page']['palettes']['regular']	= str_replace('guests;', 'guests,hc_code,hc_footer_code,hc_inheritance,hc_mode;', $GLOBALS['TL_DCA']['tl_page']['palettes']['regular']);
 $GLOBALS['TL_DCA']['tl_page']['palettes']['root']		= str_replace('includeChmod;', 'includeChmod;{expert_legend:hide},hc_code,hc_footer_code,hc_inheritance,hc_mode;', $GLOBALS['TL_DCA']['tl_page']['palettes']['root']);
 
+/**
+ * Fields
+ */
 $GLOBALS['TL_DCA']['tl_page']['fields']['hc_code'] = array
 (
 	'label'         => &$GLOBALS['TL_LANG']['tl_page']['hc_code'],
