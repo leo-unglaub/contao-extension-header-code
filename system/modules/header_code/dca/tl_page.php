@@ -75,4 +75,14 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['hc_mode'] = array
 	'eval'			=> array('tl_class'=>'w50')
 );
 
+
+/**
+ * Code editor in > Contao 2.10
+ */
+if (version_compare(VERSION, '2.10', '>='))
+{
+	$GLOBALS['TL_DCA']['tl_page']['fields']['hc_code']['eval']['rte'] = 'codeMirror|html';
+	$GLOBALS['TL_DCA']['tl_page']['fields']['hc_footer_code']['eval']['rte'] = 'codeMirror|html';
+}
+
 ?>
