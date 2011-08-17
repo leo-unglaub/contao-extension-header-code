@@ -28,50 +28,51 @@
  * @filesource
  */
 
+
 /**
  * Palettes
  */
 $GLOBALS['TL_DCA']['tl_page']['palettes']['regular']	= str_replace('guests;', 'guests,hc_code,hc_footer_code,hc_inheritance,hc_mode;', $GLOBALS['TL_DCA']['tl_page']['palettes']['regular']);
 $GLOBALS['TL_DCA']['tl_page']['palettes']['root']		= str_replace('includeChmod;', 'includeChmod;{expert_legend:hide},hc_code,hc_footer_code,hc_inheritance,hc_mode;', $GLOBALS['TL_DCA']['tl_page']['palettes']['root']);
 
+
 /**
  * Fields
  */
 $GLOBALS['TL_DCA']['tl_page']['fields']['hc_code'] = array
 (
-	'label'         => &$GLOBALS['TL_LANG']['tl_page']['hc_code'],
+	'label'			=> &$GLOBALS['TL_LANG']['tl_page']['hc_code'],
 	'exclude'		=> true,
-	'inputType'     => 'textarea',
+	'inputType'		=> 'textarea',
 	'eval'			=> array('tl_class'=>'long clr', 'preserveTags'=>true, 'decodeEntities'=>false, 'allowHtml'=>true, 'style'=>'height:200px')
 );
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['hc_footer_code'] = array
 (
-	'label'         => &$GLOBALS['TL_LANG']['tl_page']['hc_footer_code'],
+	'label'			=> &$GLOBALS['TL_LANG']['tl_page']['hc_footer_code'],
 	'exclude'		=> true,
-	'inputType'     => 'textarea',
+	'inputType'		=> 'textarea',
 	'eval'			=> array('tl_class'=>'long clr', 'preserveTags'=>true, 'decodeEntities'=>false, 'allowHtml'=>true, 'style'=>'height:200px')
 );
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['hc_inheritance'] = array
 (
-	'label'         => &$GLOBALS['TL_LANG']['tl_page']['hc_inheritance'],
+	'label'			=> &$GLOBALS['TL_LANG']['tl_page']['hc_inheritance'],
 	'exclude'		=> true,
-	'default'       => 1,
-	'inputType'     => 'select',
+	'default'		=> 1,
+	'inputType'		=> 'select',
 	'options'  		=> array(1=>$GLOBALS['TL_LANG']['MSC']['yes'], 0=>$GLOBALS['TL_LANG']['MSC']['no']),
 	'eval'			=> array('tl_class'=>'w50')
 );
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['hc_mode'] = array
 (
-	'label'         => &$GLOBALS['TL_LANG']['tl_page']['hc_mode'],
+	'label'			=> &$GLOBALS['TL_LANG']['tl_page']['hc_mode'],
 	'exclude'		=> true,
-	'default'       => 1,
-	'inputType'     => 'select',
-	'options'  		=> array(1=>$GLOBALS['TL_LANG']['tl_page']['hc_mode_add'], 0=>$GLOBALS['TL_LANG']['tl_page']['hc_mode_override']),
+	'default'		=> 1,
+	'inputType'		=> 'select',
+	'options'		=> array(1=>$GLOBALS['TL_LANG']['tl_page']['hc_mode_add'], 0=>$GLOBALS['TL_LANG']['tl_page']['hc_mode_override']),
 	'eval'			=> array('tl_class'=>'w50')
 );
-
 
 ?>

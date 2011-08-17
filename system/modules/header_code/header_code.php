@@ -28,8 +28,9 @@
  * @filesource
  */
 
-class header_code extends Frontend {
-		
+class header_code extends Frontend
+{
+
 	/**
 	 * Add the Header Code to the Site (Hook landing)
 	 */
@@ -45,7 +46,7 @@ class header_code extends Frontend {
 		$this->crawlTlPage($objPage->id);
 		return $strContent;
 	}
-	
+
 	/**
 	 * crawl the page tree to find parrent entry's
 	 * @param int $intId
@@ -63,7 +64,7 @@ class header_code extends Frontend {
 			$objRow = $this->Database->prepare('SELECT id,pid,hc_code,hc_footer_code,hc_inheritance,hc_mode FROM tl_page WHERE id=?')
 									 ->limit(1)
 									 ->execute($intId);
-			
+
 			// if the actual page has header code
 			if ((strlen($objRow->hc_code) || strlen($objRow->hc_footer_code)) && $intOldId == $objRow->id)
 			{
@@ -81,7 +82,7 @@ class header_code extends Frontend {
 					break;
 				}
 			}
-			
+
 			// check the parrents
 			if ((strlen($objRow->hc_code) || strlen($objRow->hc_footer_code)) && $intOldId !== $objRow->id && $objRow->hc_inheritance == 1)
 			{
@@ -99,10 +100,10 @@ class header_code extends Frontend {
 		// add the code to the right channel
 		$GLOBALS['TL_HEAD'][] = $strBufferHead;
 		$GLOBALS['TL_MOOTOOLS'][] = $strBufferFoot;		
-				
+
 		// after the first run the code is in the header so we can skip all other templates
 		$GLOBALS['header_code_stop'] = true;
 	}
 }
- 
+
 ?>
