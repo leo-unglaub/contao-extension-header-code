@@ -92,10 +92,14 @@ class HeaderCode extends Frontend
 			if ((strlen($objRow->hc_code) || strlen($objRow->hc_footer_code)) && $intOldId !== $objRow->id && $objRow->hc_inheritance == 1)
 			{
 				if (count($objRow->hc_code))
+				{
 					$strBufferHead .= "\n" . $objRow->hc_code;
+				}
 
 				if (count($objRow->hc_footer_code))
-					$strBufferFoot .= "\n" . $objRow->hc_footer_code;						
+				{
+					$strBufferFoot .= "\n" . $objRow->hc_footer_code;
+				}
 			}
 
 			// set the id to the next level to get the data from the parrent entry
