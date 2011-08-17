@@ -32,8 +32,8 @@
 /**
  * Palettes
  */
-$GLOBALS['TL_DCA']['tl_page']['palettes']['regular']	= str_replace('guests;', 'guests,hc_code,hc_footer_code,hc_inheritance,hc_mode;', $GLOBALS['TL_DCA']['tl_page']['palettes']['regular']);
-$GLOBALS['TL_DCA']['tl_page']['palettes']['root']		= str_replace('includeChmod;', 'includeChmod;{expert_legend:hide},hc_code,hc_footer_code,hc_inheritance,hc_mode;', $GLOBALS['TL_DCA']['tl_page']['palettes']['root']);
+$GLOBALS['TL_DCA']['tl_page']['palettes']['regular']	= str_replace('{layout_legend:hide}', '{header_code_legend},hc_code,hc_footer_code,hc_inheritance,hc_mode;{layout_legend:hide}', $GLOBALS['TL_DCA']['tl_page']['palettes']['regular']);
+$GLOBALS['TL_DCA']['tl_page']['palettes']['root']		= str_replace('{dns_legend}', '{header_code_legend},hc_code,hc_footer_code,hc_inheritance,hc_mode;{dns_legend}', $GLOBALS['TL_DCA']['tl_page']['palettes']['root']);
 
 
 /**
@@ -44,7 +44,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['hc_code'] = array
 	'label'			=> &$GLOBALS['TL_LANG']['tl_page']['hc_code'],
 	'exclude'		=> true,
 	'inputType'		=> 'textarea',
-	'eval'			=> array('tl_class'=>'long clr', 'preserveTags'=>true, 'decodeEntities'=>false, 'allowHtml'=>true, 'style'=>'height:200px')
+	'eval'			=> array('tl_class'=>'long clr', 'preserveTags'=>true, 'decodeEntities'=>false, 'allowHtml'=>true, 'style'=>'height:150px')
 );
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['hc_footer_code'] = array
@@ -52,7 +52,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['hc_footer_code'] = array
 	'label'			=> &$GLOBALS['TL_LANG']['tl_page']['hc_footer_code'],
 	'exclude'		=> true,
 	'inputType'		=> 'textarea',
-	'eval'			=> array('tl_class'=>'long clr', 'preserveTags'=>true, 'decodeEntities'=>false, 'allowHtml'=>true, 'style'=>'height:200px')
+	'eval'			=> array('tl_class'=>'long clr', 'preserveTags'=>true, 'decodeEntities'=>false, 'allowHtml'=>true, 'style'=>'height:150px')
 );
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['hc_inheritance'] = array

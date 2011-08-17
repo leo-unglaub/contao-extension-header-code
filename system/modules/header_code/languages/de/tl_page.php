@@ -39,6 +39,12 @@ $GLOBALS['TL_LANG']['tl_page']['hc_mode']			= array('Anzeigemethode', 'Die Anzei
 
 
 /**
+ * Legend
+ */
+$GLOBALS['TL_LANG']['tl_page']['header_code_legend']= 'Header Code';
+
+
+/**
  * Reference
  */
 $GLOBALS['TL_LANG']['tl_page']['hc_mode_add']		= 'alles (auch vererbten Code)';

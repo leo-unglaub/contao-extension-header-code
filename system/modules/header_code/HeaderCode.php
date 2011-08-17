@@ -28,11 +28,14 @@
  * @filesource
  */
 
-class header_code extends Frontend
+class HeaderCode extends Frontend
 {
-
 	/**
 	 * Add the Header Code to the Site (Hook landing)
+	 * 
+	 * @param string $strContent
+	 * @param string $strTemplate
+	 * @return string
 	 */
 	public function addHeaderCode($strContent, $strTemplate)
 	{	
@@ -49,7 +52,9 @@ class header_code extends Frontend
 
 	/**
 	 * crawl the page tree to find parrent entry's
+	 * 
 	 * @param int $intId
+	 * @return void
 	 */
 	private function crawlTlPage($intId)
 	{
