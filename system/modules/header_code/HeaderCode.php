@@ -1,4 +1,4 @@
-<?php //if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
 
 /**
  * Contao Open Source CMS
@@ -40,13 +40,14 @@ class HeaderCode extends Frontend
 	public function addHeaderCode($strContent, $strTemplate)
 	{	
 		// make HC running only one time
-		if ($GLOBALS['header_code_stop']) 
+		if ($GLOBALS['header_code_stop'] === true) 
 		{
 			return $strContent;
 		}
 
 		global $objPage;
 		$this->crawlTlPage($objPage->id);
+
 		return $strContent;
 	}
 
@@ -58,13 +59,12 @@ class HeaderCode extends Frontend
 	 */
 	private function crawlTlPage($intId)
 	{
-		$this->Import('Database');
+		$this->import('Database');
 		$intOldId = $intId;
 		$strBufferHead = '';
 		$strBufferFoot = '';
-		$rootId = $this->getRootIdFromUrl();
 
-		while ($intId >= $rootId)
+		while ($intId > 0)
 		{
 			$objRow = $this->Database->prepare('SELECT id,pid,hc_code,hc_footer_code,hc_inheritance,hc_mode FROM tl_page WHERE id=?')
 									 ->limit(1)
