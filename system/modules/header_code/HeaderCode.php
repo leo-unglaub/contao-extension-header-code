@@ -28,6 +28,11 @@
  * @filesource
  */
 
+
+/**
+ * Class HeaderCode
+ * Contain methods to handle the the header code
+ */
 class HeaderCode extends Frontend
 {
 	/**
@@ -40,7 +45,7 @@ class HeaderCode extends Frontend
 	public function addHeaderCode($strContent, $strTemplate)
 	{	
 		// make HC running only one time
-		if ($GLOBALS['header_code_stop'] === true) 
+		if ($GLOBALS['header_code_stop'] === true && TL_MODE != 'FE')
 		{
 			return $strContent;
 		}
