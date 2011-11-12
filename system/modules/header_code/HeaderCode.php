@@ -45,7 +45,7 @@ class HeaderCode extends Frontend
 	public function addHeaderCode($strContent, $strTemplate)
 	{	
 		// make HC running only one time
-		if ($GLOBALS['header_code_stop'] === true && TL_MODE != 'FE')
+		if ($GLOBALS['header_code_stop'] === true || TL_MODE != 'FE')
 		{
 			return $strContent;
 		}
