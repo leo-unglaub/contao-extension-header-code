@@ -10,22 +10,21 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation, either
  * version 3 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this program. If not, please visit the Free
  * Software Foundation website at <http://www.gnu.org/licenses/>.
  *
  * PHP version 5
- * @copyright  Leo Unglaub 2011
+ * @copyright  Leo Unglaub 2013
  * @author     Leo Unglaub <leo@leo-unglaub.net>
  * @package    header_code
  * @license    LGPL
- * @filesource
  */
 
 
@@ -37,13 +36,13 @@ class HeaderCode extends Frontend
 {
 	/**
 	 * Add the Header Code to the Site (Hook landing)
-	 * 
+	 *
 	 * @param string $strContent
 	 * @param string $strTemplate
 	 * @return string
 	 */
 	public function addHeaderCode($strContent, $strTemplate)
-	{	
+	{
 		// make HC running only one time
 		if ($GLOBALS['header_code_stop'] === true || TL_MODE != 'FE')
 		{
@@ -58,7 +57,7 @@ class HeaderCode extends Frontend
 
 	/**
 	 * crawl the page tree to find parrent entry's
-	 * 
+	 *
 	 * @param int $intId
 	 * @return void
 	 */
@@ -87,7 +86,7 @@ class HeaderCode extends Frontend
 				{
 					$strBufferHead = $objRow->hc_code;
 					$strBufferFoot = $objRow->hc_footer_code;
-					
+
 					// the user want's no inheritance code, so we break the while
 					break;
 				}
@@ -108,12 +107,12 @@ class HeaderCode extends Frontend
 			}
 
 			// set the id to the next level to get the data from the parrent entry
-			$intId = $objRow->pid;			
+			$intId = $objRow->pid;
 		}
 
 		// add the code to the right channel
 		$GLOBALS['TL_HEAD'][] = $strBufferHead;
-		$GLOBALS['TL_MOOTOOLS'][] = $strBufferFoot;		
+		$GLOBALS['TL_MOOTOOLS'][] = $strBufferFoot;
 
 		// after the first run the code is in the header so we can skip all other templates
 		$GLOBALS['header_code_stop'] = true;
