@@ -47,11 +47,6 @@ class HeaderCode extends Controller
 	 */
 	private function crawlTlPage($intId)
 	{
-		// import some libs
-		// DON'T remove this import, the Controller class will fail
-		// without this import
-		$this->import('Database');
-
 		// define some variables
 		$intOldId = $intId;
 		$strBufferHead = '';
