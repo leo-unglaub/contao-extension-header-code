@@ -1,0 +1,33 @@
+{
+	"name":"leounglaub/contao-header-code",
+	"description":"Allows the user to add CSS and JS code to the top and the bottom of every page.",
+	"keywords":["contao", "pagetree"],
+	"type":"contao-module",
+	"license":"LGPL-3.0+",
+	"authors":[
+		{
+			"name":"Leo Unglaub",
+			"email":"leo@leo-unglaub.net",
+			"homepage":"http://www.leo-unglaub.net",
+			"role":"Developer"
+		}
+	],
+	"require":{
+		"php":">=5.3",
+		"contao/core":"~3",
+                "contao-community-alliance/composer-installer": "*"
+	},
+	"autoload":{
+		"classmap":["system/"]
+	},
+	"replace": {
+		"contao-legacy/header_code": "*"
+	},
+	"extra":{
+		"contao": {
+			"sources":{
+				"system/modules/header_code": "system/modules/header_code"
+			}
+		}
+	}
+}
