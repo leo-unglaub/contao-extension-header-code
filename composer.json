@@ -12,6 +12,13 @@
 			"role":"Developer"
 		}
 	],
+	"support": {
+		"email": "leo@leo-unglaub.net",
+		"issues": "https://bitbucket.org/leo-unglaub/contao-header-code/issues",
+		"wiki": "https://www.leo-unglaub.net/software/contao-extensions",
+		"irc": "irc://irc.freenode.org/contao.dev",
+		"source": "https://bitbucket.org/leo-unglaub/contao-header-code/src/"
+	},
 	"require":{
 		"php":">=5.3",
 		"contao/core":"~3",
