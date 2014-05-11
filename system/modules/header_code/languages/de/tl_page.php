@@ -32,5 +32,3 @@ $GLOBALS['TL_LANG']['tl_page']['header_code_legend']= 'Header Code';
  */
 $GLOBALS['TL_LANG']['tl_page']['hc_mode_add']		= 'alles (auch vererbten Code)';
 $GLOBALS['TL_LANG']['tl_page']['hc_mode_override']	= 'nur den aktuellen Header/Footer Code ausgeben';
-
-?>

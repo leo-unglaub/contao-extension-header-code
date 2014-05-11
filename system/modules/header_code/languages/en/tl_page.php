@@ -32,5 +32,3 @@ $GLOBALS['TL_LANG']['tl_page']['header_code_legend']= 'Header Code';
  */
 $GLOBALS['TL_LANG']['tl_page']['hc_mode_add']		= 'all (also inheritanced code)';
 $GLOBALS['TL_LANG']['tl_page']['hc_mode_override']	= 'only the code from this site (no inheritance)';
-
-?>

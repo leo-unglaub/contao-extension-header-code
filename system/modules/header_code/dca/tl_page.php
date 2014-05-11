@@ -102,5 +102,3 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['hc_mode'] = array
 	),
 	'sql'			=> "char(1) NOT NULL default ''",
 );
-
-?>

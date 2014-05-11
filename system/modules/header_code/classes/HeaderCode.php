@@ -104,5 +104,3 @@ class HeaderCode extends Controller
 		$GLOBALS['header_code_stop'] = true;
 	}
 }
-
-?>
