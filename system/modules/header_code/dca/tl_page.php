@@ -45,7 +45,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['hc_code'] = array
 		'decodeEntities'	=> false,
 		'allowHtml'			=> true,
 		'style'				=> 'height:150px',
-		'rte'				=> 'codeMirror|html',
+		'rte'				=> 'ace|html',
 	),
 	'sql'			=> 'blob NULL',
 );
@@ -62,7 +62,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['hc_footer_code'] = array
 		'decodeEntities'	=> false,
 		'allowHtml'			=> true,
 		'style'				=> 'height:150px',
-		'rte'				=> 'codeMirror|html',
+		'rte'				=> 'ace|html',
 	),
 	'sql'			=> 'blob NULL',
 );
