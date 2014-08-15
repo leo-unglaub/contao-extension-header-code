@@ -97,7 +97,7 @@ class HeaderCode extends Controller
 
 		// add the code to the right channel
 		$GLOBALS['TL_HEAD'][] = $this->replaceInsertTags($strBufferHead);
-		$GLOBALS['TL_MOOTOOLS'][] = $this->replaceInsertTags($strBufferFoot);
+		$GLOBALS['TL_BODY'][] = $this->replaceInsertTags($strBufferFoot);
 
 
 		// after the first run the code is in the header so we can skip all other templates
