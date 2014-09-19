@@ -25,18 +25,16 @@ class HeaderCode extends Controller
 	 * @param	string	$strTemplate	The name of the template.
 	 * @return	string					The content of the template.
 	 */
-	public function addHeaderCode($strContent, $strTemplate)
+	public function addHeaderCode(\Template $template)
 	{
 		// make HC running only one time
-		if ($GLOBALS['header_code_stop'] === true || TL_MODE != 'FE')
+		if ($GLOBALS['header_code_stop'] === true || TL_MODE != 'FE' || 'fe_' !== substr($template->getName(), 0, 3))
 		{
-			return $strContent;
+			return;
 		}
 
 		global $objPage;
 		$this->crawlTlPage($objPage->id);
-
-		return $strContent;
 	}
 
 	/**
