@@ -28,13 +28,19 @@ class HeaderCode extends Controller
 	public function addHeaderCode(\Template $template)
 	{
 		// make HC running only one time
-		if ($GLOBALS['header_code_stop'] === true || TL_MODE !== 'FE' || 'fe_' !== substr($template->getName(), 0, 3))
+		if
+		(
+			$GLOBALS['header_code_stop'] === true ||
+			TL_MODE !== 'FE' ||
+			'fe_' !== substr ($template->getName (), 0, 3)
+		)
 		{
 			return;
 		}
 
+
 		global $objPage;
-		$this->crawlTlPage($objPage->id);
+		$this->crawlTlPage ($objPage->id);
 	}
 
 	/**
@@ -57,7 +63,14 @@ class HeaderCode extends Controller
 			$objRow = $this->getPageDetails($intId);
 
 			// if the actual page has header code
-			if ((strlen($objRow->hc_code) || strlen($objRow->hc_footer_code)) && $intOldId == $objRow->id)
+			if
+			(
+				(
+					strlen ($objRow->hc_code) ||
+					strlen ($objRow->hc_footer_code)
+				) &&
+					$intOldId == $objRow->id
+			)
 			{
 				if ($objRow->hc_mode == 1)
 				{
@@ -75,7 +88,15 @@ class HeaderCode extends Controller
 			}
 
 			// check the parents
-			if ((strlen($objRow->hc_code) || strlen($objRow->hc_footer_code)) && $intOldId !== $objRow->id && $objRow->hc_inheritance == 1)
+			if
+			(
+				(
+					strlen ($objRow->hc_code) ||
+					strlen ($objRow->hc_footer_code)
+				) &&
+					$intOldId !== $objRow->id &&
+					$objRow->hc_inheritance == 1
+			)
 			{
 				if (count($objRow->hc_code))
 				{
@@ -94,8 +115,8 @@ class HeaderCode extends Controller
 
 
 		// add the code to the right channel
-		$GLOBALS['TL_HEAD'][] = $this->replaceInsertTags($strBufferHead);
-		$GLOBALS['TL_BODY'][] = $this->replaceInsertTags($strBufferFoot);
+		$GLOBALS['TL_HEAD'][] = $this->replaceInsertTags ($strBufferHead);
+		$GLOBALS['TL_BODY'][] = $this->replaceInsertTags ($strBufferFoot);
 
 
 		// after the first run the code is in the header so we can skip all other templates
