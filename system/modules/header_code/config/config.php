@@ -15,4 +15,4 @@
 /**
  * Hooks
  */
-$GLOBALS['TL_HOOKS']['parseFrontendTemplate'][] = array('HeaderCode', 'addHeaderCode');
+$GLOBALS['TL_HOOKS']['parseTemplate'][] = array('HeaderCode', 'addHeaderCode');
