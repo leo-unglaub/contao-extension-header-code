@@ -28,7 +28,7 @@ class HeaderCode extends Controller
 	public function addHeaderCode(\Template $template)
 	{
 		// make HC running only one time
-		if ($GLOBALS['header_code_stop'] === true || TL_MODE != 'FE' || 'fe_' !== substr($template->getName(), 0, 3))
+		if ($GLOBALS['header_code_stop'] === true || TL_MODE !== 'FE' || 'fe_' !== substr($template->getName(), 0, 3))
 		{
 			return;
 		}
