@@ -25,7 +25,7 @@ class HeaderCode extends Controller
 	 * @param	string	$strTemplate	The name of the template.
 	 * @return	string					The content of the template.
 	 */
-	public function addHeaderCode(\Template $template)
+	public function addHeaderCode (\Template $template)
 	{
 		// make HC running only one time
 		if
@@ -49,7 +49,7 @@ class HeaderCode extends Controller
 	 * @param	int		$intId	The if of the page that should be parsed.
 	 * @return	void			This method returns nothing.
 	 */
-	private function crawlTlPage($intId)
+	private function crawlTlPage ($intId)
 	{
 		// define some variables
 		$intOldId = $intId;
@@ -60,7 +60,7 @@ class HeaderCode extends Controller
 		// walk thru every page until we hit 0
 		while ($intId > 0)
 		{
-			$objRow = $this->getPageDetails($intId);
+			$objRow = $this->getPageDetails ($intId);
 
 			// if the actual page has header code
 			if
